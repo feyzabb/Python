@@ -46,16 +46,27 @@ class Torragon(Creature):
         return "Torragon uses Hydro Pump!"
 
 
-class CreatureFactor(abc.ABC):
+class CreatureFactory(abc.ABC):
     @abc.abstractmethod
-    def create_base(self) -> str:
-        pass
-
-    @abc.abstractmethod
-    def create_evolved(self) -> str:
-        pass
-
-
-class FlameFactory(CreatureFactor)
     def create_base(self) -> Creature:
-        
+        pass
+
+    @abc.abstractmethod
+    def create_evolved(self) -> Creature:
+        pass
+
+
+class FlameFactory(CreatureFactory):
+    def create_base(self) -> Creature:
+        return Flameling()
+
+    def create_evolved(self) -> Creature:
+        return Pyrodon()
+
+
+class AquaFactory(CreatureFactory):
+    def create_base(self) -> Creature:
+        return Aquabub()
+
+    def create_evolved(self) -> Creature:
+        return Torragon()
