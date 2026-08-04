@@ -3,6 +3,10 @@ from ex0.creature import Creature
 from ex1.capability import TransformCapability, HealCapability
 
 
+class InvalidStrategyError(Exception):
+    """Raised when a Creature is not suitable for the given strategy."""
+
+
 class BattleStrategy(abc.ABC):
     @abc.abstractmethod
     def is_valid(self, creature: Creature) -> bool:
@@ -27,7 +31,7 @@ class AggressiveStrategy(BattleStrategy):
 
     def act(self, creature: Creature) -> None:
         if not self.is_valid(creature):
-            raise ValueError(
+            raise InvalidStrategyError(
                 f"Invalid Creature '{creature.name}' "
                 f"for this aggressive strategy"
             )
@@ -44,7 +48,7 @@ class DefensiveStrategy(BattleStrategy):
 
     def act(self, creature: Creature) -> None:
         if not self.is_valid(creature):
-            raise ValueError(
+            raise InvalidStrategyError(
                 f"Invalid Creature '{creature.name}' "
                 f"for this defensive strategy"
             )
