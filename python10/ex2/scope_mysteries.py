@@ -1,4 +1,5 @@
 from collections.abc import Callable
+from typing import Any
 
 
 def mage_counter() -> Callable:
@@ -9,6 +10,7 @@ def mage_counter() -> Callable:
         nonlocal count
         count += 1
         return count
+
     return counter
 
 
@@ -20,28 +22,33 @@ def spell_accumulator(initial_power: int) -> Callable:
         nonlocal total_power
         total_power += added_power
         return total_power
+
     return accumulator
 
 
 def enchantment_factory(enchantment_type: str) -> Callable:
+
     def apply_enchantment(item_name: str) -> str:
         return f"{enchantment_type} {item_name}"
+
     return apply_enchantment
 
 
 def memory_vault() -> dict[str, Callable]:
 
-    vault: dict[str, any] = {}
+    vault: dict[str, Any] = {}
 
-    def store(key: str, value: any) -> None:
+    def store(key: str, value: Any) -> None:
         vault[key] = value
 
-    def recall(key: str) -> any:
+    def recall(key: str) -> Any:
         return vault.get(key, "Memory not found")
+
     return {"store": store, "recall": recall}
 
 
 if __name__ == "__main__":
+
     print("Testing mage counter...")
     counter_a = mage_counter()
     counter_b = mage_counter()
