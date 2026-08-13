@@ -31,7 +31,8 @@ def check_dependencies() -> bool:
 
     if not all_ready:
         print("ERROR: Missing dependencies detected!")
-        print("Please install the required packages using one of the following methods:\n")
+        print("Please install the required packages using one of"
+              "the following methods:\n")
         print("Using pip:")
         print("  pip install -r requirements.txt\n")
         print("Using Poetry:")

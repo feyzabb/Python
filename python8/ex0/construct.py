@@ -25,7 +25,9 @@ def main() -> None:
 
         else:
             venv_path: str | None = os.environ.get('VIRTUAL_ENV')
-            venv_name: str = os.path.basename(venv_path) if venv_path else "Unknown"
+            venv_name: str = (
+                os.path.basename(venv_path) if venv_path else "Unknown"
+            )
 
             print("MATRIX STATUS: Welcome to the construct\n")
 

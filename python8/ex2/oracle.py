@@ -1,6 +1,5 @@
 import os
-import sys
-from dotenv import load_dotenv
+from dotenv import load_dotenv  # type: ignore
 
 
 def main() -> None:
@@ -22,10 +21,13 @@ def main() -> None:
     print("Configuration loaded:")
     print(f"Mode: {matrix_mode}")
 
-    if matrix_mode == 'development':
-        print("Database: Connected to local instance")
+    if db_url:
+        if matrix_mode == 'development':
+            print("Database: Connected to local instance")
+        else:
+            print("Database: Connected to SECURE PRODUCTION CLUSTER")
     else:
-        print("Database: Connected to SECURE PRODUCTION CLUSTER")
+        print("Database: NOT CONNECTED (Missing DATABASE_URL)")
 
     if api_key:
         print("API Access: Authenticated")
