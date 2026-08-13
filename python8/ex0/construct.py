@@ -38,7 +38,7 @@ def main() -> None:
             print("the global system.\n")
 
             print("Package installation path:")
-            
+
             site_packages = site.getsitepackages()
             if site_packages:
                 print(site_packages[0])
